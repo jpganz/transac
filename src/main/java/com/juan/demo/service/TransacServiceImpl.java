@@ -1,6 +1,6 @@
 package com.juan.demo.service;
 
-import com.juan.demo.model.entity.Transac;
+import com.juan.demo.model.Transac;
 import com.juan.demo.repository.TransacRepository;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public class TransacServiceImpl implements TransacService {
     }
 
     @Override
-    public List<Transac> getAnimalNames(){
+    public List<Transac> getTransacs(){
         return transacRepository.findAll();
     }
 }

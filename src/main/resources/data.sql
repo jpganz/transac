@@ -1,7 +1,7 @@
-INSERT INTO animal VALUES (NULL, 'dog');
+INSERT INTO transac VALUES (NULL, 'dog');
 
-INSERT INTO animal VALUES (NULL, 'cat');
+INSERT INTO transac VALUES (NULL, 'cat');
 
-INSERT INTO animal VALUES (NULL, 'owl');
+INSERT INTO transac VALUES (NULL, 'owl');
 
-INSERT INTO animal VALUES (NULL, 'another cat');
+INSERT INTO transac VALUES (NULL, 'another cat');

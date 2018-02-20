@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 public class ServiceConfig {
 
     @Bean
-    public TransacService animalService(TransacRepository transacRepository){
+    public TransacService transacService(TransacRepository transacRepository){
         return new TransacServiceImpl(transacRepository);
     }
 }

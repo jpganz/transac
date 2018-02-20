@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication
+//@SpringBootApplication
 @Configuration
 //@ComponentScan
-//@EnableAutoConfiguration
+@EnableAutoConfiguration //hate this tag
 //@EnableTransactionManagement
 @Import( {
                  DataConfig.class,
