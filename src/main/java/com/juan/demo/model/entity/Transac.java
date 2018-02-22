@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.time.Instant;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,8 +22,8 @@ public class Transac {
 
     }
 
-    public Transac(final Instant time, final Double value) {
-        this.time = time;
+    public Transac(final Date timeField, final Double value) {
+        this.timeField = timeField;
         this.value = value;
     }
 
@@ -30,8 +31,8 @@ public class Transac {
     @GeneratedValue(strategy = IDENTITY)
     private long id;
 
-    @Column(nullable = false)
-    private Instant time;
+    @Column(name = "timefield", nullable = false)
+    private Date timeField;
 
 
     @Column(nullable = false)
@@ -45,19 +46,19 @@ public class Transac {
         this.id = id;
     }
 
-    public Instant getTime() {
-        return time;
-    }
-
-    public void setTime(final Instant time) {
-        this.time = time;
-    }
-
     public Double getValue() {
         return value;
     }
 
     public void setValue(final Double value) {
         this.value = value;
+    }
+
+    public Date getTimeField() {
+        return timeField;
+    }
+
+    public void setTimeField(final Date timeField) {
+        this.timeField = timeField;
     }
 }

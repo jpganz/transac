@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface TransacService {
 
-    List<Double> getTransacsValues();
+    List<Double> getTransactionValuesFromLastMinute();
 
     Transac save(Transac transac);
 
-    Transac saveAndCachTransac(Transac transac, long cacheKey);
+    Transac saveAndCachTransaction(Transac transac, long cacheKey);
 
 }

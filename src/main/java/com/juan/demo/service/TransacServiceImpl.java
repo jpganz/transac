@@ -1,12 +1,10 @@
 package com.juan.demo.service;
 
 import com.hazelcast.core.HazelcastInstance;
-import com.juan.demo.model.TransacModel;
 import com.juan.demo.model.entity.Transac;
 import com.juan.demo.repository.TransacRepository;
 
 import javax.transaction.Transactional;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,7 +23,7 @@ public class TransacServiceImpl implements TransacService {
     }
 
     @Override
-    public List<Double> getTransacsValues(){
+    public List<Double> getTransactionValuesFromLastMinute() {
         final List<Double> transactionsValues = new ArrayList<>();
         final ConcurrentMap<Long, Double> map = hazelcastInstance.getMap(HAZZEL_CAST_CACHE_MAP_NAME);
         map.forEach((k, v) -> transactionsValues.add(v));
@@ -40,20 +38,20 @@ public class TransacServiceImpl implements TransacService {
 
     @Override
     @Transactional
-    public Transac saveAndCachTransac(final Transac transac, final long cacheKey){
+    public Transac saveAndCachTransaction(final Transac transac, final long cacheKey) {
         this.save(transac);
         setOnCache(transac, cacheKey);
         return transac;
     }
 
 
-    private void setOnCache(final Transac transac, final long cacheKey){
+    private void setOnCache(final Transac transac, final long cacheKey) {
         final Random random = new Random();
         final long safeCacheKey = cacheKey - random.nextLong();
         try {
             hazelcastInstance.getMap(HAZZEL_CAST_CACHE_MAP_NAME).put(safeCacheKey, transac.getValue());
-        }catch(Exception e){
-            // log the error xD
+        } catch (Exception e) {
+            //todo log the error xD
         }
     }
 

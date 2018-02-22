@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.CREATED;
@@ -27,7 +28,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_UTF8_VALUE;
 
 @Api("Transactions")
 @RestController
-@RequestMapping(value = "/transac")
+@RequestMapping(value = "/transaction")
 public class TransacController {
 
     private final TransacService transacService;
@@ -40,23 +41,24 @@ public class TransacController {
     @ApiOperation(value = "Get transaction values for the last 60 seconds")
     @ResponseBody
     @GetMapping(produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<List<Double>> getAnimals() {
-        return new ResponseEntity<>(transacService.getTransacsValues(), null, OK);
+    public ResponseEntity<List<Double>> getTransactions() {
+        return new ResponseEntity<>(transacService.getTransactionValuesFromLastMinute(), null, OK);
     }
 
     @Timed
     @ApiOperation(value = "Post transac")
     @ResponseBody
     @PostMapping(produces = APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity postTransac(@RequestBody final TransacModel transac) {
+    public ResponseEntity saveANewTransaction(@RequestBody final TransacModel transac) {
         try {
             HttpStatus returnValue = CREATED;
-            final Instant instantOfTransac = convertToInstant(transac.getTime());
-            if (isDataCacheable(instantOfTransac)) {
-                transacService.saveAndCachTransac(new Transac(instantOfTransac, transac.getValue()), transac.getTime());
+            final Instant instantOfThisTransaction = convertToInstant(transac.getTime());
+            if (isDataCacheable(instantOfThisTransaction)) {
+                //todo: seems like Instant is (sadly) not supported
+                transacService.saveAndCachTransaction(new Transac(Date.from(instantOfThisTransaction), transac.getValue()), transac.getTime());
             } else {
                 returnValue = NO_CONTENT;
-                transacService.save(new Transac(instantOfTransac, transac.getValue()));
+                transacService.save(new Transac(Date.from(instantOfThisTransaction), transac.getValue()));
             }
             return new ResponseEntity<>(transac, null, returnValue);
         } catch (Exception e) {

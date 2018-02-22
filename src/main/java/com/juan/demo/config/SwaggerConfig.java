@@ -33,12 +33,8 @@ public class SwaggerConfig {
                 .build();
     }
 
-    @SuppressWarnings("Guava")
     private Predicate<String> paths() {
-        //return equalTo("/transac");
-        return not(
-                or(regex("/internal.*"),
-                   regex("/error.*")));
+        return equalTo("/transaction");
     }
 
     private ApiInfo apiInfo() {
@@ -46,7 +42,7 @@ public class SwaggerConfig {
                 .description("Microservice to collect info.")
                 .title("Collecter")
                 .version("1.0")
-                .contact(new Contact("juan", "some url", "mymail"))
+                .contact(new Contact("juan", "some url", "jpganz18@gmail.com"))
                 .build();
     }
 
