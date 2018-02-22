@@ -1,7 +1,1 @@
-INSERT INTO transac VALUES (NULL, 'dog');
-
-INSERT INTO transac VALUES (NULL, 'cat');
-
-INSERT INTO transac VALUES (NULL, 'owl');
-
-INSERT INTO transac VALUES (NULL, 'another cat');
+INSERT INTO transac VALUES (NULL, 12.3, CURRENT_TIMESTAMP);

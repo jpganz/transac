@@ -14,6 +14,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import static com.google.common.base.Predicates.equalTo;
 import static com.google.common.base.Predicates.not;
 import static com.google.common.base.Predicates.or;
 import static springfox.documentation.builders.PathSelectors.regex;
@@ -34,6 +35,7 @@ public class SwaggerConfig {
 
     @SuppressWarnings("Guava")
     private Predicate<String> paths() {
+        //return equalTo("/transac");
         return not(
                 or(regex("/internal.*"),
                    regex("/error.*")));

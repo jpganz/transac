@@ -1,5 +1,6 @@
 package com.juan.demo;
 
+import com.juan.demo.config.CacheConfig;
 import com.juan.demo.config.ControllersConfig;
 import com.juan.demo.config.DataConfig;
 import com.juan.demo.config.ServiceConfig;
@@ -14,14 +15,15 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 //@SpringBootApplication
 @Configuration
-//@ComponentScan
+@ComponentScan
 @EnableAutoConfiguration //hate this tag
 //@EnableTransactionManagement
 @Import( {
                  DataConfig.class,
                  ControllersConfig.class,
                  ServiceConfig.class,
-                 SwaggerConfig.class
+                 SwaggerConfig.class,
+                 CacheConfig.class
          })
 public class DemoApplication {
 

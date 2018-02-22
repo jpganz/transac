@@ -1,6 +1,6 @@
 package com.juan.demo.repository;
 
-import com.juan.demo.model.Transac;
+import com.juan.demo.model.entity.Transac;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
