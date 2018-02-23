@@ -45,7 +45,7 @@ public class TransacController {
     }
 
     @Timed
-    @ApiOperation(value = "Post transac")
+    @ApiOperation(value = "Save a new transaction")
     @ResponseBody
     @PostMapping(produces = APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity saveANewTransaction(@RequestBody final TransacModel transac) {
