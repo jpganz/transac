@@ -1,6 +1,5 @@
 package com.juan.demo.service;
 
-import com.juan.demo.model.TransacModel;
 import com.juan.demo.model.entity.Transac;
 
 import java.util.List;

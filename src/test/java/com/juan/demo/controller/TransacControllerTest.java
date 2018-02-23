@@ -23,7 +23,6 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-
 @RunWith(MockitoJUnitRunner.class)
 public class TransacControllerTest {
 
@@ -45,7 +44,7 @@ public class TransacControllerTest {
         final TransacModel transacModel = new TransacModel(EPOCH_WITH_MILLIS, AMOUNT);
         final Instant instantTime = Instant.ofEpochMilli(EPOCH_WITH_MILLIS);
         final Transac savedTransac = new Transac(Date.from(instantTime), AMOUNT);
-        when(transacService.save(new Transac( Date.from(instantTime), transacModel.getValue()))).thenReturn(savedTransac);
+        when(transacService.save(new Transac(Date.from(instantTime), transacModel.getValue()))).thenReturn(savedTransac);
         final ResponseEntity responseEntity = transacController.saveANewTransaction(transacModel);
         verify(transacService, times(1)).save(any(Transac.class));
         verify(transacService, never()).saveAndCachTransaction(any(Transac.class), any(Long.class));

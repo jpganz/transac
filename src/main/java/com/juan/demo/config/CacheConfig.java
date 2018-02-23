@@ -1,6 +1,5 @@
 package com.juan.demo.config;
 
-import com.hazelcast.config.CollectionConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import org.springframework.context.annotation.Bean;
@@ -11,7 +10,7 @@ import com.hazelcast.config.Config;
 public class CacheConfig {
 
     @Bean
-    HazelcastInstance hazelCastInstance(){
+    HazelcastInstance hazelCastInstance() {
 
         Config cfg = new Config();
         cfg.getMapConfig("transacs")

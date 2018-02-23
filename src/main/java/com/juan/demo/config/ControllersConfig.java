@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class ControllersConfig {
 
     @Bean
-    public TransacController transacController(TransacService transacService){
+    public TransacController transacController(TransacService transacService) {
         return new TransacController(transacService);
     }
 }

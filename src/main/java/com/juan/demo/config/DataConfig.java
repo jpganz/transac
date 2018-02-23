@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@Import( { HibernateJpaAutoConfiguration.class} )
+@Import( {HibernateJpaAutoConfiguration.class})
 
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.juan.demo.repository")

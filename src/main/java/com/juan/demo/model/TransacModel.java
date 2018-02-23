@@ -2,7 +2,6 @@ package com.juan.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class TransacModel {
 
     @JsonProperty("time")
